@@ -1,0 +1,669 @@
+
+/*
+  GASTRONOMICS BUILD 05A
+  Mobile-responsive enhancements.
+  Desktop styles remain unchanged.
+*/
+
+/* General touch and accessibility improvements */
+button,
+a,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #e5bf89;
+  outline-offset: 3px;
+}
+
+.globe-host,
+.globe-host canvas {
+  touch-action: pan-x pan-y;
+}
+
+@media (max-width: 780px) {
+  :root {
+    --mobile-nav-height: 76px;
+    --mobile-safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  .app-shell {
+    display: block !important;
+    width: 100% !important;
+    min-height: 100dvh;
+  }
+
+  /* Bottom navigation replaces desktop sidebar */
+  .sidebar {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: calc(
+      var(--mobile-nav-height) + var(--mobile-safe-bottom)
+    ) !important;
+    padding: 6px 5px calc(7px + var(--mobile-safe-bottom)) !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    z-index: 120 !important;
+    background: rgba(8, 22, 31, .98) !important;
+    border-top: 1px solid #405460;
+    border-right: 0 !important;
+    box-shadow: 0 -10px 35px #0008;
+  }
+
+  .sidebar .brand,
+  .sidebar .side-label,
+  .sidebar .sidebar-bottom {
+    display: none !important;
+  }
+
+  .sidebar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch;
+    gap: 3px !important;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .sidebar-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar-nav .nav-item {
+    flex: 1 0 53px;
+    min-width: 53px;
+    min-height: 56px;
+    padding: 7px 3px !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    border: 0;
+    border-radius: 7px;
+    font-size: 9px !important;
+    line-height: 1.15 !important;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .sidebar-nav .nav-item svg {
+    flex-shrink: 0;
+    width: 19px;
+    height: 19px;
+  }
+
+  .sidebar-nav .nav-item span {
+    display: block !important;
+    max-width: 65px;
+    text-align: center;
+    font-size: 9px !important;
+    line-height: 1.2;
+  }
+
+  .sidebar-nav .nav-item.active {
+    background: #2a404a;
+    color: #e9c18d;
+  }
+
+  /* Main atlas fills the remaining viewport */
+  .main-stage {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: calc(
+      100dvh - var(--mobile-nav-height)
+      - var(--mobile-safe-bottom)
+    ) !important;
+    min-height: 430px;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+  }
+
+  .globe-layer {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .globe-host {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Compact atlas header */
+  .topbar {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    min-height: 70px;
+    padding: 11px 12px !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    z-index: 5;
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 21, 31, .96),
+      rgba(8, 21, 31, .25)
+    );
+  }
+
+  .breadcrumb {
+    font-size: 9px !important;
+    letter-spacing: .5px !important;
+    gap: 5px !important;
+  }
+
+  .mode-toggle {
+    display: flex;
+    flex-shrink: 0;
+    padding: 3px !important;
+    gap: 3px;
+  }
+
+  .mode-toggle button {
+    min-height: 35px;
+    padding: 7px 8px !important;
+    font-size: 9px !important;
+    letter-spacing: 0 !important;
+    gap: 5px !important;
+  }
+
+  .mode-toggle button svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  /* Opening title */
+  .intro {
+    position: absolute !important;
+    left: 16px !important;
+    right: 16px !important;
+    top: 100px !important;
+    bottom: auto !important;
+    width: auto !important;
+    max-width: 360px;
+    padding: 0 !important;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .intro .eyebrow {
+    font-size: 9px;
+    letter-spacing: 1.1px;
+    line-height: 1.6;
+  }
+
+  .intro h1 {
+    font-size: clamp(35px, 11vw, 55px) !important;
+    line-height: 1.09 !important;
+    margin: 13px 0 !important;
+  }
+
+  .intro > p {
+    font-size: 12px !important;
+    line-height: 1.65 !important;
+  }
+
+  .intro-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px !important;
+    pointer-events: auto;
+  }
+
+  .intro-actions button {
+    min-height: 42px;
+    padding: 10px 12px !important;
+    font-size: 10px !important;
+  }
+
+  .intro-minimized {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .atlas-stats {
+    display: none !important;
+  }
+
+  .legend {
+    position: absolute !important;
+    bottom: 60px !important;
+    left: 10px !important;
+    right: 10px !important;
+    top: auto !important;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 13px !important;
+    width: auto !important;
+    padding: 9px !important;
+    border-radius: 8px;
+    background: rgba(10, 26, 36, .78);
+    backdrop-filter: blur(12px);
+  }
+
+  .legend span {
+    font-size: 9px;
+  }
+
+  .stage-footer {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 47px !important;
+    padding: 0 12px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    z-index: 5;
+  }
+
+  .stage-footer > span:first-child {
+    font-size: 9px;
+  }
+
+  .stage-footer .footer-hint {
+    display: none !important;
+  }
+
+  .stage-footer button {
+    min-height: 35px;
+    font-size: 10px;
+    padding: 7px 9px;
+  }
+
+  /* City and story list */
+  .chapter-explorer {
+    position: absolute !important;
+    top: 80px !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: 55px !important;
+    width: auto !important;
+    max-width: none !important;
+    padding: 16px !important;
+    z-index: 11 !important;
+    overflow: hidden;
+  }
+
+  .chapter-results button {
+    min-height: 66px;
+    padding: 12px 7px;
+  }
+
+  .searchbox input {
+    min-height: 40px;
+    font-size: 14px;
+  }
+
+  .chapter-filter button {
+    min-height: 35px;
+    font-size: 11px;
+  }
+
+  /* Bottom-sheet story reader */
+  .editorial-drawer {
+    position: absolute !important;
+    top: 29% !important;
+    bottom: 49px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    border-radius: 18px 18px 0 0 !important;
+    border-left: 0;
+    border-right: 0;
+    z-index: 12 !important;
+    background: rgba(10, 24, 34, .985);
+    box-shadow: 0 -18px 55px #0009;
+  }
+
+  .drawer-header {
+    min-height: 54px;
+    padding: 13px 17px;
+  }
+
+  .drawer-header button {
+    min-width: 38px;
+    min-height: 38px;
+    display: grid;
+    place-items: center;
+  }
+
+  .drawer-body {
+    padding: 17px 20px 35px !important;
+    overscroll-behavior: contain;
+  }
+
+  .drawer-body h2 {
+    font-size: clamp(27px, 8vw, 37px) !important;
+  }
+
+  .editorial-subtitle {
+    font-size: 16px !important;
+  }
+
+  .story-prose {
+    font-size: 13px;
+    line-height: 1.85;
+  }
+
+  .chart-area,
+  .evidence-card {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* Ingredient list in original atlas */
+  .journey-selector {
+    position: absolute !important;
+    top: 84px !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: 54px !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    overflow-y: auto !important;
+    z-index: 10 !important;
+    padding: 17px !important;
+    background: rgba(11, 27, 37, .97);
+    border: 1px solid #435b66;
+    border-radius: 11px;
+    scrollbar-width: thin;
+  }
+
+  .journey-items button {
+    min-height: 58px;
+  }
+
+  /* Guided presentation */
+  .presenter-controls {
+    position: absolute !important;
+    bottom: 51px !important;
+    left: 8px !important;
+    right: 8px !important;
+    width: auto !important;
+    min-height: 54px;
+    z-index: 15 !important;
+    padding: 8px !important;
+    gap: 6px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 9px;
+  }
+
+  .presenter-controls button {
+    min-width: 36px;
+    min-height: 38px;
+    flex-shrink: 0;
+  }
+
+  .presenter-label {
+    font-size: 9px !important;
+  }
+
+  .presenter-title {
+    min-width: 0;
+    flex: 1;
+    font-size: 10px !important;
+    line-height: 1.4;
+  }
+
+  /* AI chat */
+  .atlas-ai-root {
+    position: fixed !important;
+    left: 10px !important;
+    right: auto !important;
+    bottom: calc(
+      var(--mobile-nav-height)
+      + var(--mobile-safe-bottom) + 17px
+    ) !important;
+    z-index: 350 !important;
+  }
+
+  .atlas-ai-launch {
+    min-height: 43px;
+    padding: 11px 13px;
+    font-size: 10px;
+  }
+
+  .atlas-ai-panel {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: calc(
+      var(--mobile-nav-height)
+      + var(--mobile-safe-bottom)
+    ) !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    border: 0;
+    border-radius: 0 !important;
+    background: #0e1d29;
+    z-index: 350 !important;
+  }
+
+  .atlas-ai-header {
+    min-height: 62px;
+    padding: 12px 15px;
+  }
+
+  .atlas-ai-messages {
+    padding: 14px 16px;
+    overscroll-behavior: contain;
+  }
+
+  .atlas-ai-bubble {
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .atlas-ai-form {
+    margin: 0 10px;
+  }
+
+  .atlas-ai-form textarea {
+    font-size: 16px;
+  }
+
+  /* Keep feature launchers separated */
+  .cinema-launch {
+    position: fixed !important;
+    right: 10px !important;
+    bottom: calc(
+      var(--mobile-nav-height)
+      + var(--mobile-safe-bottom) + 17px
+    ) !important;
+    z-index: 130 !important;
+  }
+
+  .cinema-launch-button {
+    min-height: 43px;
+    padding: 10px 12px;
+    font-size: 9px;
+  }
+
+  .js-launch {
+    position: fixed !important;
+    right: 10px !important;
+    bottom: calc(
+      var(--mobile-nav-height)
+      + var(--mobile-safe-bottom) + 72px
+    ) !important;
+    z-index: 131 !important;
+  }
+
+  .js-launch-button {
+    min-height: 43px;
+    padding: 10px 12px;
+    font-size: 9px;
+  }
+
+  .js-picker,
+  .cinema-launch-menu {
+    max-width: calc(100vw - 20px);
+    max-height: 60dvh;
+    overflow-y: auto;
+  }
+
+  /* Fullscreen story experiences must sit over bottom navigation */
+  .cinema-screen {
+    z-index: 1000 !important;
+    height: 100dvh;
+  }
+
+  .js-fullscreen {
+    z-index: 1100 !important;
+    height: 100dvh;
+  }
+
+  .cinema-scene-scroll,
+  .js-scroll {
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cinema-header-right button,
+  .js-header > button {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .cinema-footer-controls button,
+  .js-controls button {
+    min-height: 42px;
+  }
+
+  .cinema-mode button,
+  .js-mode button {
+    min-height: 37px;
+  }
+
+  .cinema-diagram,
+  .cinema-chart,
+  .js-graphic,
+  .cinema-shared-map {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .cinema-diagram-nodes {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 390px) {
+  .sidebar-nav .nav-item {
+    flex: 1 0 47px;
+    min-width: 47px;
+  }
+
+  .sidebar-nav .nav-item span {
+    font-size: 8px !important;
+  }
+
+  .breadcrumb {
+    display: none !important;
+  }
+
+  .topbar {
+    justify-content: center;
+  }
+
+  .intro {
+    top: 90px !important;
+  }
+
+  .intro h1 {
+    font-size: 38px !important;
+  }
+
+  .cinema-launch-button,
+  .js-launch-button,
+  .atlas-ai-launch {
+    letter-spacing: 0;
+  }
+
+  .presenter-label {
+    display: none;
+  }
+}
+
+/* Short phones and landscape */
+@media (max-height: 600px) and (max-width: 900px) {
+  .intro {
+    top: 75px !important;
+  }
+
+  .intro h1 {
+    font-size: 34px !important;
+  }
+
+  .editorial-drawer {
+    top: 17% !important;
+  }
+
+  .cinema-scene-scroll,
+  .js-scroll {
+    padding-bottom: 28px;
+  }
+}
+
+/* Respect operating system accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  .intro,
+  .chapter-results button,
+  .atlas-ai-launch {
+    transition: none !important;
+  }
+}

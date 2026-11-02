@@ -1,0 +1,49 @@
+
+/* GASTRONOMICS — Mobile UI overlap fixes */
+
+@media (max-width: 780px) {
+
+  /* Move route legend above the floating controls */
+  .legend {
+    position: absolute !important;
+    top: 80px !important;
+    bottom: auto !important;
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 12px;
+    padding: 8px !important;
+    font-size: 9px;
+    background: rgba(10, 25, 34, 0.82);
+    border-radius: 8px;
+    z-index: 4;
+  }
+
+  /* Compact the AI launcher */
+  .atlas-ai-root {
+    left: 10px !important;
+    right: auto !important;
+    bottom: calc(165px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .atlas-ai-launch {
+    padding: 10px 12px !important;
+    min-height: 42px;
+    font-size: 10px !important;
+    border-radius: 7px;
+  }
+
+  /* Prevent the presentation footer from overlapping controls */
+  .stage-footer {
+    z-index: 5;
+  }
+}
+
+@media (max-width: 390px) {
+  .legend {
+    top: 75px !important;
+  }
+}

@@ -1,0 +1,334 @@
+
+/* GASTRONOMICS 05A.1 — FINAL UNIFIED DOCK */
+
+.gastronomics-feature-dock {
+  position: fixed;
+  z-index: 500;
+  left: 0;
+  right: 0;
+  bottom: 82px;
+  margin: 0 auto;
+  width: max-content;
+  max-width: calc(100vw - 24px);
+  padding: 9px 11px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #4a606a;
+  border-radius: 12px;
+  background: rgba(9, 25, 35, .97);
+  box-shadow: 0 15px 45px #0008;
+}
+
+.feature-dock-label {
+  padding: 0 9px;
+  color: #9baeb8;
+  font: 700 9px/1.2 sans-serif;
+  letter-spacing: 1.2px;
+  white-space: nowrap;
+}
+
+.feature-dock-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Override the three original independent positions. */
+
+.gastronomics-feature-dock .atlas-ai-root,
+.gastronomics-feature-dock .cinema-launch,
+.gastronomics-feature-dock .js-launch {
+  position: static !important;
+  inset: auto !important;
+  width: auto;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  z-index: auto !important;
+}
+
+/* Consistent controls. */
+
+.gastronomics-feature-dock .atlas-ai-launch,
+.gastronomics-feature-dock .cinema-launch-button,
+.gastronomics-feature-dock .js-launch-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: auto;
+  height: 43px;
+  min-height: 43px;
+  margin: 0;
+  padding: 0 13px !important;
+  border-radius: 7px;
+  box-shadow: none;
+  white-space: nowrap;
+  font-size: 10px !important;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: .5px !important;
+  cursor: pointer;
+}
+
+.gastronomics-feature-dock .atlas-ai-launch {
+  color: #15232c;
+  background: #d9b681;
+  border: 1px solid #e7c58d;
+}
+
+.gastronomics-feature-dock .cinema-launch-button {
+  color: #edd0a3;
+  background: #233b47;
+  border: 1px solid #60717c;
+}
+
+.gastronomics-feature-dock .js-launch-button {
+  color: #a7e0db;
+  background: #193b43;
+  border: 1px solid #5daea9;
+}
+
+.gastronomics-feature-dock .atlas-ai-launch:hover {
+  background: #ebcb96;
+}
+
+.gastronomics-feature-dock .cinema-launch-button:hover {
+  background: #304e5d;
+}
+
+.gastronomics-feature-dock .js-launch-button:hover {
+  background: #26535a;
+}
+
+.gastronomics-feature-dock .atlas-ai-launch svg,
+.gastronomics-feature-dock .cinema-launch-button svg,
+.gastronomics-feature-dock .js-launch-button svg {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+}
+
+/* Menus position relative to the shared dock. */
+
+.gastronomics-feature-dock .cinema-launch-menu,
+.gastronomics-feature-dock .js-picker {
+  position: absolute !important;
+  top: auto !important;
+  bottom: calc(100% + 12px) !important;
+  left: auto !important;
+  right: 0 !important;
+  transform: none !important;
+  width: min(355px, calc(100vw - 28px));
+  max-height: 65dvh;
+  margin: 0 !important;
+  overflow-y: auto;
+}
+
+/* Desktop AI chat opens above the dock. */
+
+.gastronomics-feature-dock .atlas-ai-panel {
+  position: absolute !important;
+  top: auto !important;
+  bottom: calc(100% + 14px) !important;
+  left: 0 !important;
+  right: auto !important;
+  width: min(425px, calc(100vw - 28px)) !important;
+  height: min(610px, calc(100dvh - 195px)) !important;
+  border-radius: 12px !important;
+  z-index: 600 !important;
+}
+
+/* Full-screen features remain viewport-fixed. */
+
+.gastronomics-feature-dock .cinema-screen,
+.gastronomics-feature-dock .js-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+}
+
+.gastronomics-feature-dock .cinema-screen {
+  z-index: 1000 !important;
+}
+
+.gastronomics-feature-dock .js-fullscreen {
+  z-index: 1100 !important;
+}
+
+/* Desktop legend, separate from the dock. */
+
+@media (min-width: 781px) {
+  .main-stage .legend {
+    position: absolute !important;
+    top: 172px !important;
+    right: 24px !important;
+    bottom: auto !important;
+    left: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 11px !important;
+    width: max-content !important;
+    padding: 13px 15px !important;
+    border: 1px solid #51657166;
+    border-radius: 9px;
+    background: #0a1923d9;
+    z-index: 3;
+  }
+}
+
+@media (min-width: 781px) and (max-width: 1100px) {
+  .feature-dock-label {
+    display: none;
+  }
+
+  .gastronomics-feature-dock {
+    gap: 4px;
+    padding: 7px;
+  }
+
+  .gastronomics-feature-dock .atlas-ai-launch,
+  .gastronomics-feature-dock .cinema-launch-button,
+  .gastronomics-feature-dock .js-launch-button {
+    padding: 0 10px !important;
+    font-size: 9px !important;
+  }
+}
+
+/* Mobile toolbar above bottom navigation. */
+
+@media (max-width: 780px) {
+  .gastronomics-feature-dock {
+    left: 0;
+    right: 0;
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+    width: min(350px, calc(100vw - 20px));
+    max-width: none;
+    padding: 7px;
+    gap: 0;
+    justify-content: center;
+  }
+
+  .feature-dock-label {
+    display: none;
+  }
+
+  .feature-dock-actions {
+    width: 100%;
+    gap: 6px;
+    justify-content: space-between;
+  }
+
+  .gastronomics-feature-dock .atlas-ai-root,
+  .gastronomics-feature-dock .cinema-launch,
+  .gastronomics-feature-dock .js-launch {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .gastronomics-feature-dock .atlas-ai-launch,
+  .gastronomics-feature-dock .cinema-launch-button,
+  .gastronomics-feature-dock .js-launch-button {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    height: 47px;
+    min-height: 47px;
+    padding: 4px !important;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0 !important;
+    letter-spacing: 0 !important;
+    line-height: 1 !important;
+  }
+
+  .gastronomics-feature-dock .atlas-ai-launch::after {
+    content: "AI CHAT";
+  }
+
+  .gastronomics-feature-dock .cinema-launch-button::after {
+    content: "CONFLICTS";
+  }
+
+  .gastronomics-feature-dock .js-launch-button::after {
+    content: "JOURNEYS";
+  }
+
+  .gastronomics-feature-dock .atlas-ai-launch::after,
+  .gastronomics-feature-dock .cinema-launch-button::after,
+  .gastronomics-feature-dock .js-launch-button::after {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .4px;
+  }
+
+  /* Relocate legend away from bottom controls. */
+
+  .main-stage .legend {
+    position: absolute !important;
+    top: 148px !important;
+    right: 7px !important;
+    left: auto !important;
+    bottom: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    width: max-content !important;
+    max-width: 115px;
+    padding: 9px !important;
+    border: 1px solid #6a879566;
+    border-radius: 8px;
+    background: #081822d9;
+    z-index: 2 !important;
+  }
+
+  .main-stage .legend span {
+    font-size: 9px !important;
+    white-space: nowrap;
+  }
+
+  /* Full-width AI panel on phones. */
+
+  .gastronomics-feature-dock .atlas-ai-panel {
+    position: fixed !important;
+    inset: 0 0 auto 0 !important;
+    width: 100vw !important;
+    height: calc(
+      100dvh - 76px - env(safe-area-inset-bottom, 0px)
+    ) !important;
+    border-radius: 0 !important;
+    z-index: 700 !important;
+  }
+
+  .gastronomics-feature-dock .cinema-launch-menu,
+  .gastronomics-feature-dock .js-picker {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100%;
+    max-height: 60dvh;
+  }
+}
+
+@media (max-width: 390px) {
+  .main-stage .legend {
+    top: 130px !important;
+    padding: 7px !important;
+  }
+
+  .main-stage .legend span {
+    font-size: 8px !important;
+  }
+
+  .gastronomics-feature-dock .atlas-ai-launch::after,
+  .gastronomics-feature-dock .cinema-launch-button::after,
+  .gastronomics-feature-dock .js-launch-button::after {
+    font-size: 8px;
+  }
+}
